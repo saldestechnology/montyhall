@@ -20,23 +20,9 @@ Source: [Wolfram Mathworld - Monty Hall Problem](https://mathworld.wolfram.com/M
 - `montyHall.ts`: Contains the `MontyHall` class, which simulates the Monty Hall problem.
 - `server.ts`: Sets up a RESTful API using the Oak middleware framework for running the Monty Hall simulation.
 - `montyHall_test.ts`: Contains the test cases for the `MontyHall` class.
-- `montyHall_bench.ts`: Contains the benchmark test for the `MontyHall` class.
 - `README.md`: This file, which provides an overview of the project and instructions on how to run the simulation, API, tests, and benchmark.
 
 ## Running the Simulation
-
-1. Create a file named `main.ts` with the following content:
-
-```ts
-import { MontyHall } from "./montyHall.ts";
-
-const numSimulations: number = 100000;
-const montyHall: MontyHall = new MontyHall(numSimulations);
-montyHall.simulate();
-montyHall.printResults();
-```
-
-## Run the simulation using the following command:
 
 ### Docker
 
@@ -53,6 +39,21 @@ docker run -d montyhall:latest
 ```
 
 This will start a server locally and the simulation can be accessed at http://localhost:8000/montyhall/10000
+
+### Local
+
+Create a file named `main.ts` with the following content:
+
+```ts
+import { MontyHall } from "./montyHall.ts";
+
+const numSimulations: number = 100000;
+const montyHall: MontyHall = new MontyHall(numSimulations);
+montyHall.simulate();
+montyHall.printResults();
+```
+
+Run the simulation using the following command:
 
 ### Local
 
