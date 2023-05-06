@@ -38,8 +38,26 @@ montyHall.printResults();
 
 ## Run the simulation using the following command:
 
+### Docker
+
+#### Build:
+
 ```sh
-deno run --allow-read main.ts
+docker build -t montyhall:latest .
+```
+
+#### Run:
+
+```sh
+docker run -d montyhall:latest
+```
+
+This will start a server locally and the simulation can be accessed at http://localhost:8000/montyhall/10000
+
+### Local
+
+```sh
+deno run main.ts
 ```
 
 This will execute the Monty Hall simulation and print the results, including the winning percentages when staying and switching.
