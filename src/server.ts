@@ -17,10 +17,10 @@ router.get("/montyhall/:numSimulations", (ctx) => {
   montyHall.simulate();
   ctx.response.body = {
     numSimulations: numSimulations,
-    stayWins: montyHall.getStayWins,
-    switchWins: montyHall.getSwitchWins,
-    stayWinningPercentage: (montyHall.getStayWins / numSimulations) * 100,
-    switchWinningPercentage: (montyHall.getSwitchWins / numSimulations) * 100,
+    stayWins: montyHall.stayWins,
+    switchWins: montyHall.switchWins,
+    stayWinningPercentage: (montyHall.stayWins / numSimulations) * 100,
+    switchWinningPercentage: (montyHall.switchWins / numSimulations) * 100,
   };
 });
 
