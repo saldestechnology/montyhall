@@ -1,37 +1,37 @@
 export class MontyHall {
-  private numSimulations: number;
-  private numBoxes: number;
-  private switchWins: number;
-  private stayWins: number;
+  private _numSimulations: number;
+  private _numBoxes: number;
+  private _switchWins: number;
+  private _stayWins: number;
 
   constructor(numSimulations: number, numBoxes: number = 3) {
-    this.numSimulations = numSimulations;
-    this.numBoxes = numBoxes;
-    this.switchWins = 0;
-    this.stayWins = 0;
+    this._numSimulations = numSimulations;
+    this._numBoxes = numBoxes;
+    this._switchWins = 0;
+    this._stayWins = 0;
   }
 
   // Getters
-  get getSwitchWins(): number {
-    return this.switchWins;
+  get switchWins(): number {
+    return this._switchWins;
   }
 
-  get getStayWins(): number {
-    return this.stayWins;
+  get stayWins(): number {
+    return this._stayWins;
   }
 
   // Returns a random number from 0 to numBoxes - 1, excluding the given numbers.
   private randomBox(exclude: number[] = []): number {
     let box: number;
     do {
-      box = Math.floor(Math.random() * this.numBoxes);
+      box = Math.floor(Math.random() * this._numBoxes);
     } while (exclude.includes(box));
     return box;
   }
 
   // Simulates the Monty Hall problem.
   public simulate(): void {
-    for (let i = 0; i < this.numSimulations; i++) {
+    for (let i = 0; i < this._numSimulations; i++) {
       const prizeBox: number = this.randomBox();
       const chosenBox: number = this.randomBox();
 
@@ -41,25 +41,25 @@ export class MontyHall {
       // If the player switches, they select the remaining box.
       const switchedBox: number = this.randomBox([chosenBox, openedBox]);
 
-      this.stayWins += chosenBox === prizeBox ? 1 : 0;
-      this.switchWins += switchedBox === prizeBox ? 1 : 0;
+      this._stayWins += chosenBox === prizeBox ? 1 : 0;
+      this._switchWins += switchedBox === prizeBox ? 1 : 0;
     }
   }
 
   // Prints the results of the simulation.
   public printResults(): void {
-    console.log(`Results after ${this.numSimulations} simulations:`);
-    console.log(`Wins when staying: ${this.stayWins}`);
-    console.log(`Wins when switching: ${this.switchWins}`);
+    console.log(`Results after ${this._numSimulations} simulations:`);
+    console.log(`Wins when staying: ${this._stayWins}`);
+    console.log(`Wins when switching: ${this._switchWins}`);
     console.log(
       `Winning percentage when staying: ${
-        (this.stayWins / this.numSimulations) * 100
-      }%`
+        (this._stayWins / this._numSimulations) * 100
+      }%`,
     );
     console.log(
       `Winning percentage when switching: ${
-        (this.switchWins / this.numSimulations) * 100
-      }%`
+        (this._switchWins / this._numSimulations) * 100
+      }%`,
     );
   }
 }

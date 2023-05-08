@@ -6,7 +6,7 @@ Deno.test("Monty Hall Simulation - More switch wins than stay wins", () => {
   const montyHall = new MontyHall(numSimulations);
   montyHall.simulate();
 
-  assertEquals(montyHall.getSwitchWins > montyHall.getStayWins, true);
+  assertEquals(montyHall.switchWins > montyHall.stayWins, true);
 });
 
 Deno.test("Monty Hall Simulation - Total wins equal total simulations", () => {
@@ -14,7 +14,7 @@ Deno.test("Monty Hall Simulation - Total wins equal total simulations", () => {
   const montyHall = new MontyHall(numSimulations);
   montyHall.simulate();
 
-  assertEquals(montyHall.getSwitchWins + montyHall.getStayWins, numSimulations);
+  assertEquals(montyHall.switchWins + montyHall.stayWins, numSimulations);
 });
 
 Deno.test(
@@ -23,14 +23,13 @@ Deno.test(
     const numSimulations = 10000;
     const montyHall = new MontyHall(numSimulations);
     montyHall.simulate();
-    const stayWinningPercentage =
-      (montyHall.getStayWins / numSimulations) * 100;
+    const stayWinningPercentage = (montyHall.stayWins / numSimulations) * 100;
 
     assertEquals(
       stayWinningPercentage >= 32 && stayWinningPercentage <= 35,
-      true
+      true,
     );
-  }
+  },
 );
 
 Deno.test(
@@ -39,12 +38,12 @@ Deno.test(
     const numSimulations = 10000;
     const montyHall = new MontyHall(numSimulations);
     montyHall.simulate();
-    const switchWinningPercentage =
-      (montyHall.getSwitchWins / numSimulations) * 100;
+    const switchWinningPercentage = (montyHall.switchWins / numSimulations) *
+      100;
 
     assertEquals(
       switchWinningPercentage >= 64 && switchWinningPercentage <= 68,
-      true
+      true,
     );
-  }
+  },
 );
