@@ -1,4 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak@v12.4.0/mod.ts";
+import * as cors from "https://deno.land/x/cors/mod.ts";
 import { MontyHall } from "./montyHall/index.ts";
 
 const router = new Router();
@@ -25,6 +26,8 @@ router.get("/montyhall/:numSimulations", (ctx) => {
 });
 
 const app = new Application();
+
+app.use(cors.oakCors());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
